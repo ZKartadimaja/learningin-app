@@ -14,7 +14,7 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/quizFragment"
-        android:name="com.example.learningin.ui.fragments.QuizFragment"
-        tools:layout="@layout/fragment_quiz" />
+        android:id="@+id/mycourseFragment"
+        android:name="com.example.learningin.ui.fragments.MyCourseFragment"
+        tools:layout="@layout/fragment_my_courses" />
 </navigation>
