@@ -1,5 +1,6 @@
 package com.example.learningin.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningin.R
+import com.example.learningin.activity.CourseActivity
 import com.example.learningin.data.Course
 import com.example.learningin.ui.adapters.CourseAdapter
 
@@ -43,6 +45,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCourseSelected(course: Course) {
-        // Handle course selection
+        // Create an Intent to start CourseActivity
+        val intent = Intent(requireContext(), CourseActivity::class.java)
+
+        // Pass the course data to the CourseActivity (you can use Parcelable)
+        intent.putExtra("courseTitle", course.title)
+        intent.putExtra("courseDescription", course.overview)
+        // Add any other data you want to pass
+
+        // Start the CourseActivity
+        startActivity(intent)
     }
+
 }

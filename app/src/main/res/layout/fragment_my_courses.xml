@@ -1,3 +1,4 @@
+<!-- res/layout/fragment_my_course.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -5,16 +6,15 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/myCourseTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Courses"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_my_courses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"/>
+    <TextView
+        android:id="@+id/myCourseDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

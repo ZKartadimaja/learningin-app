@@ -38,6 +38,11 @@
             app:layout_constraintTop_toTopOf="@id/frameLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+<!--        <com.google.android.exoplayer2.ui.PlayerView-->
+<!--            android:id="@+id/player_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
     </FrameLayout>
 
     <TextView

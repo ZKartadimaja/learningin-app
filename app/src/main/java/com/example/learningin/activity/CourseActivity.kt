@@ -10,6 +10,7 @@ import android.widget.VideoView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learningin.R
+import com.example.learningin.ui.fragments.MyCourseFragment
 
 class CourseActivity : AppCompatActivity() {
 
@@ -32,6 +33,13 @@ class CourseActivity : AppCompatActivity() {
         quizButton = findViewById(R.id.quizBtn)
         bookmarkButton = findViewById(R.id.bookmark)
 
+        // Receive data from intent
+        val title = intent.getStringExtra("courseTitle")
+        val overview = intent.getStringExtra("courseDescription")
+
+        courseTitle.text = title
+        courseDesc.text = overview
+
         // Set MediaController for video playback controls
         val mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
@@ -40,6 +48,8 @@ class CourseActivity : AppCompatActivity() {
         // Set video path
         val videoPath = "android.resource://${packageName}/${R.raw.sample_video}"
         videoView.setVideoURI(Uri.parse(videoPath))
+
+//        videoView.setVideoURI("https://www.youtube.com/watch?v=pn7gC0wzsqU")
 
         // Set up button listeners
         quizButton.isEnabled = false // Initially disable the quiz button
@@ -52,6 +62,16 @@ class CourseActivity : AppCompatActivity() {
         bookmarkButton.setOnClickListener {
             // Handle bookmarking the course
             Toast.makeText(this, "Course bookmarked!", Toast.LENGTH_SHORT).show()
+
+            // Create and display MyCourseFragment
+            val title = courseTitle.text.toString()
+            val description = courseDesc.text.toString()
+
+            val myCourseFragment = MyCourseFragment.newInstance(title, description)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, myCourseFragment) // Make sure you have a FrameLayout or similar with this ID in your activity layout
+                .addToBackStack(null) // Optional: Adds this transaction to the back stack
+                .commit()
         }
 
         // Enable quiz button when video finishes

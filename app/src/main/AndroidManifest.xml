@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Learningin"
         tools:targetApi="31">
         <activity
-            android:name=".activity.CourseActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             tools:ignore="DuplicateActivity">
             <intent-filter>
@@ -23,7 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.CourseActivity"/>
+<!--        <activity android:name=".activity.MainActivity" />-->
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.QuizzizActivity"/>
     </application>
