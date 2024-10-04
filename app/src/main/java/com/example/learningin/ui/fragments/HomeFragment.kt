@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learningin.R
 import com.example.learningin.data.Course
@@ -25,16 +26,23 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        courseList = view.findViewById(R.id.recycler_view)
-        adapter = CourseAdapter(courses) { course -> onCourseSelected(course) }
+        super.onViewCreated(view, savedInstanceState) // Call super first
+
+        courseList = view.findViewById(R.id.recyclerViewHistory)
+        courseList.layoutManager = LinearLayoutManager(requireContext()) // Provide context
+
+        // Create a data list and populate it
+        val data = ArrayList<Course>()
+        for (i in 1..5) {
+            data.add(Course("Course Title $i", "Item $i", R.drawable.book))
+        }
+
+        // Use the data list for the adapter
+        adapter = CourseAdapter(data) { course -> onCourseSelected(course) }
         courseList.adapter = adapter
     }
 
     private fun onCourseSelected(course: Course) {
-        val fragment = ClassOverviewFragment.newInstance(course)
-        fragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, fragment)
-            ?.addToBackStack(null)
-            ?.commit()
+        // Handle course selection
     }
 }
