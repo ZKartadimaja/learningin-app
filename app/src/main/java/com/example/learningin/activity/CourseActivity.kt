@@ -27,6 +27,8 @@ class CourseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course)
 
+        supportActionBar?.hide()
+
         // Initialize views
         courseTitle = findViewById(R.id.courseTitle)
         courseDescTitle = findViewById(R.id.courseDescTitle)

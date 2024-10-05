@@ -22,6 +22,8 @@ class QuizzizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quizziz)
 
+        supportActionBar?.hide()
+
         questionsRecyclerView = findViewById(R.id.questions_recycler_view)
         questionsRecyclerView.layoutManager = LinearLayoutManager(this)
 

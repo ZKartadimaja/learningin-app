@@ -3,37 +3,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="@drawable/background"
+    android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Full Name"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp" />
+    <!-- Avatar Image -->
+    <ImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/avatar"
+        android:scaleType="centerCrop"
+        android:contentDescription="User Avatar" />
 
     <TextView
         android:id="@+id/fullNameTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"/>
+        android:text="Full Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
         android:textSize="16sp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/emailTextView"
@@ -42,7 +39,8 @@
         android:text="john.doe@example.com"
         android:layout_marginBottom="24dp"
         android:padding="12dp"
-        android:background="@drawable/edit_text_background"/>
+        android:gravity="center"
+        android:background="@drawable/edit_text_background" />
 
     <Button
         android:id="@+id/button_update_profile"
@@ -50,5 +48,8 @@
         android:layout_height="wrap_content"
         android:text="Update Profile"
         android:textColor="@android:color/white"
-        android:padding="12dp" />
+        android:background="@android:color/holo_blue_light"
+        android:padding="12dp"
+        android:gravity="center" />
+
 </LinearLayout>

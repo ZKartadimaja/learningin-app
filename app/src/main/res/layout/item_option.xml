@@ -5,14 +5,22 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Question TextView -->
     <TextView
         android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:text="Sample Question:"
+        android:layout_marginBottom="12dp"
+        android:textStyle="bold"/>
 
+    <!-- RadioGroup with RadioButtons -->
     <RadioGroup
         android:id="@+id/options_group"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    </RadioGroup>
 </LinearLayout>
