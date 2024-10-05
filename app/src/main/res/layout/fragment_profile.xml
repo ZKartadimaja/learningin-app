@@ -2,7 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@android:color/white">
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,38 +11,44 @@
         android:text="Profile"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Full Name"
+        android:textSize="16sp"
         android:layout_marginTop="8dp" />
 
-    <EditText
-        android:id="@+id/edit_text_full_name"
+    <TextView
+        android:id="@+id/fullNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your full name"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_background"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
+        android:textSize="16sp"
         android:layout_marginTop="8dp" />
 
-    <EditText
-        android:id="@+id/edit_text_email"
+    <TextView
+        android:id="@+id/emailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your email"
-        android:layout_marginBottom="16dp"
-        android:inputType="textEmailAddress" />
+        android:text="john.doe@example.com"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_background"/>
 
     <Button
         android:id="@+id/button_update_profile"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Profile" />
+        android:text="Update Profile"
+        android:textColor="@android:color/white"
+        android:padding="12dp" />
 </LinearLayout>

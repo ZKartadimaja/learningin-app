@@ -2,9 +2,11 @@ package com.example.learningin.services
 
 import retrofit2.Call
 import com.example.learningin.data.QuizResponse
+import com.example.learningin.data.UserResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 data class LoginRequest(val email: String, val password: String)
@@ -20,4 +22,7 @@ interface ApiService {
 
     @POST("api/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
+
+    @GET("api/users/{id}")
+    fun getUser(@Path("id") userId: Int): Call<UserResponse>
 }

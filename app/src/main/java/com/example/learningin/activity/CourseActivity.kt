@@ -9,7 +9,9 @@ import android.widget.TextView
 import android.widget.VideoView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.learningin.BookmarkRepository
 import com.example.learningin.R
+import com.example.learningin.data.Course
 import com.example.learningin.ui.fragments.MyCourseFragment
 
 class CourseActivity : AppCompatActivity() {
@@ -63,15 +65,24 @@ class CourseActivity : AppCompatActivity() {
             // Handle bookmarking the course
             Toast.makeText(this, "Course bookmarked!", Toast.LENGTH_SHORT).show()
 
-            // Create and display MyCourseFragment
-            val title = courseTitle.text.toString()
-            val description = courseDesc.text.toString()
+            // Create the course object
+            val course = Course(
+                title = courseTitle.text.toString(),
+                overview = courseDesc.text.toString(),
+                image = R.drawable.book // Use an appropriate image resource
+            )
 
-            val myCourseFragment = MyCourseFragment.newInstance(title, description)
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, myCourseFragment) // Make sure you have a FrameLayout or similar with this ID in your activity layout
-                .addToBackStack(null) // Optional: Adds this transaction to the back stack
-                .commit()
+            // Add to bookmarks
+            BookmarkRepository.addBookmark(course)
+
+            // Create and display MyCourseFragment
+            val intent = Intent(this, MainActivity::class.java)
+
+            // Start MainActivity
+            startActivity(intent)
+
+            // Finish this activity to return to MainActivity
+            finish()
         }
 
         // Enable quiz button when video finishes

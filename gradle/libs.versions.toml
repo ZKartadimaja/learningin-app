@@ -37,7 +37,6 @@ exoplayer = {group = "com.google.android.exoplayer", name = "exoplayer", version
 converterGson = {group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

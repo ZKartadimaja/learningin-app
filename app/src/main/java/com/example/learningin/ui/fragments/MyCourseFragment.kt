@@ -1,50 +1,52 @@
 package com.example.learningin.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.learningin.BookmarkRepository
 import com.example.learningin.R
+import com.example.learningin.activity.CourseActivity
+import com.example.learningin.data.Course
+import com.example.learningin.ui.adapters.CourseAdapter
 
-class MyCourseFragment : Fragment(){
-    private lateinit var courseTitle: TextView
-    private lateinit var courseDesc: TextView
+class MyCourseFragment : Fragment() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CourseAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_courses, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize views
-        courseTitle = view.findViewById(R.id.myCourseTitle)
-        courseDesc = view.findViewById(R.id.myCourseDesc)
+        recyclerView = view.findViewById(R.id.recyclerViewMyCourses)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Get arguments from CourseActivity
-        val args = arguments
-        args?.let {
-            val title = it.getString("courseTitle")
-            val description = it.getString("courseDescription")
-            courseTitle.text = title
-            courseDesc.text = description
-        }
+        // Fetch the bookmarked courses
+        val bookmarkedCourses = BookmarkRepository.getBookmarks()
+        adapter = CourseAdapter(bookmarkedCourses) { course -> onCourseSelected(course) }
+        recyclerView.adapter = adapter
     }
 
-    companion object {
-        fun newInstance(title: String, description: String): MyCourseFragment {
-            val fragment = MyCourseFragment()
-            val args = Bundle()
-            args.putString("courseTitle", title)
-            args.putString("courseDescription", description)
-            fragment.arguments = args
-            return fragment
+    private fun onCourseSelected(course: Course) {
+        // Create an Intent to start CourseActivity
+        val intent = Intent(requireContext(), CourseActivity::class.java).apply {
+            putExtra("courseTitle", course.title)
+            putExtra("courseDescription", course.overview)
+            // Pass any other necessary data
         }
+
+        // Start CourseActivity
+        startActivity(intent)
     }
 }
